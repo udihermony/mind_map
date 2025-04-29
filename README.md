@@ -1,73 +1,76 @@
-# Mind Graph
+# Interactive 3D Graph Visualization
 
-An interactive web application that visualizes learning dependencies using Sigma.js and OpenAI. Enter a subject you want to learn about, and the application will generate a graph showing its dependencies and related concepts.
+This project is an interactive 3D graph visualization built with Three.js. It displays hierarchical data, such as learning subjects, as nodes connected by edges, allowing users to explore relationships by expanding and collapsing parts of the graph.
 
 ## Features
 
-- Interactive graph visualization using Sigma.js
-- OpenAI-powered dependency generation
-- Modern React frontend
-- Node.js/Express backend
+- **Interactive 3D Visualization**: Explore the graph in three dimensions with smooth camera controls
+- **Hierarchical Data Display**: View data organized in multiple levels (e.g., main subjects and their sub-topics)
+- **Dynamic Node Expansion**: 
+  - Start with just the root node visible
+  - Click to expand nodes and reveal connected nodes
+  - Click again to collapse nodes and hide their descendants
+- **Visual Feedback**:
+  - Green nodes: Normal state
+  - Red nodes: Expanded state
+  - Yellow nodes: Hover state
+  - Semi-transparent blue edges showing connection strength
+- **Always-Facing Text**: Labels that automatically rotate to face the camera
+- **Responsive Design**: Adapts to different screen sizes
 
-## Prerequisites
+## Data Structure
 
-- Node.js (v14 or higher)
-- npm (v6 or higher)
-- OpenAI API key
+The graph data is separated from the visualization code for easy modification. The data structure includes:
 
-## Setup
+- **Nodes**: Represent subjects or topics
+  - Position in 3D space
+  - Name/label
+  - Hierarchical level
+- **Edges**: Represent relationships between nodes
+  - Connection between nodes
+  - Weight (visualized as edge thickness)
+
+## Setup and Usage
 
 1. Clone the repository
-2. Install backend dependencies:
-   ```bash
-   npm install
-   ```
-3. Install frontend dependencies:
-   ```bash
-   cd client
-   npm install
-   ```
-4. Create a `.env` file in the root directory with your OpenAI API key:
-   ```
-   PORT=5000
-   OPENAI_API_KEY=your_openai_api_key_here
-   ```
-
-## Running the Application
-
-1. Start the backend server:
-   ```bash
-   npm run dev
-   ```
-2. In a new terminal, start the frontend:
-   ```bash
-   cd client
-   npm start
-   ```
-3. Open your browser and navigate to `http://localhost:3000`
-
-## Usage
-
-1. Enter a subject you want to learn about in the input field
-2. Click "Generate Graph" to create the visualization
-3. Interact with the graph by:
-   - Dragging nodes to rearrange
-   - Zooming in/out using the mouse wheel
-   - Panning by dragging the background
+2. Open `index.html` in a web browser
+3. Interact with the graph:
+   - Left-click and drag to rotate
+   - Right-click and drag to pan
+   - Scroll to zoom in/out
+   - Click on nodes to expand/collapse
 
 ## Project Structure
 
-- `server.js` - Backend server with OpenAI integration
-- `client/` - React frontend application
-  - `src/App.js` - Main application component
-  - `src/components/` - React components
-  - `public/` - Static files
+```
+.
+├── index.html          # Main HTML file
+├── graph.js            # Visualization code
+├── graph_data.js       # Graph data structure
+└── README.md          # This file
+```
 
-## Technologies Used
+## Dependencies
 
-- React
-- Sigma.js
-- Graphology
-- Node.js
-- Express
-- OpenAI API 
+- Three.js (loaded via CDN)
+- OrbitControls for camera manipulation
+- FontLoader for text rendering
+
+## Customization
+
+To modify the graph data:
+1. Edit `graph_data.js`
+2. Update the nodes and edges arrays
+3. Maintain the same data structure format
+
+## Future Enhancements
+
+- Add animations for expand/collapse transitions
+- Implement search functionality
+- Add tooltips with additional information
+- Support for loading different data sets
+- Custom styling options
+
+## License
+
+This project is open source and available under the MIT License. 
